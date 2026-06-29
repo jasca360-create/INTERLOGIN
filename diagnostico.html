@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ============================================================
+     META
+     ============================================================ -->
+<title>Interlogin · Comercio exterior con estructura</title>
+<meta name="description" content="Coordinamos operaciones de comercio exterior desde origen hasta destino: revisión documental, seguimiento operativo y comunicación clara entre proveedor, forwarder, agente aduanal, transporte y cliente. Solicita tu diagnóstico de importación." />
+<meta name="theme-color" content="#000000" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Interlogin · Comercio exterior con estructura" />
+<meta property="og:description" content="Importa con claridad, control y estructura operativa. Solicita un diagnóstico de importación." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://interlogin.io" />
+
+<style>
+/* ============================================================
+   INTERLOGIN — LANDING DE CONVERSIÓN
+   Concepto rector: "Comercio exterior con estructura".
+   Tono: institucional, sobrio, corporativo, premium.
+   CSS en un solo archivo. Sin librerías, sin frameworks.
+   ============================================================ */
+
+/* ---------- Paleta corporativa ----------
+   Negro            #000000
+   Gris corporativo #4A4F54
+   Azul claro 1     #BFD5E6
+   Azul claro 2 /
+   acento           #8AACD1
+   Blanco           #FFFFFF
+*/
+:root{
+  --black:#000000;
+  --dark:#15171A;        /* casi negro: fondos oscuros sobre imagen */
+  --graphite:#4A4F54;    /* gris corporativo: fondos oscuros */
+  --graphite-d:#3B3F44;  /* variante más profunda */
+  --sky:#BFD5E6;         /* azul claro: paneles y acentos suaves */
+  --sky-soft:#EAF1F7;    /* tinte muy claro derivado para fondos */
+  --accent:#8AACD1;      /* acento: botones, enlaces, detalles */
+  --accent-d:#50749E;    /* acento oscuro: texto-acento sobre claro */
+  --accent-h:#789DC4;    /* acento hover */
+
+  --ink:#17191C;         /* texto base (negro grafito) */
+  --head:#000000;        /* títulos */
+  --muted:#5C6168;       /* texto secundario */
+  --muted-d:#8B9099;     /* texto terciario */
+  --line:#E3E7EC;        /* hairline claro */
+  --line-dark:rgba(255,255,255,.16);
+  --bg:#FFFFFF;
+  --bg-soft:#F5F6F8;     /* gris muy claro */
+
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Helvetica Neue",sans-serif;
+  --maxw:1180px;
+  --r:14px;
+  --r-sm:10px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* ---------- Reset ---------- */
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+html,body{overflow-x:hidden;}
+body{
+  margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+  line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+h1,h2,h3,h4{line-height:1.14;letter-spacing:-.018em;font-weight:700;margin:0;color:var(--head);}
+
+/* ---------- Layout helpers ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+/* Compensa la altura del header fijo al navegar por anclas */
+section[id]{scroll-margin-top:96px;}
+.section{padding:108px 0;}
+
+/* Eyebrow institucional: versalitas con tracking (sin estética de consola) */
+.eyebrow{
+  font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-d);
+  display:inline-flex;align-items:center;gap:11px;margin:0 0 20px;font-weight:600;
+}
+.eyebrow::before{
+  content:"";width:26px;height:1px;background:var(--accent);display:inline-block;
+}
+.eyebrow--light{color:var(--sky);}
+.eyebrow--light::before{background:var(--sky);}
+
+.lead{font-size:clamp(18px,2.1vw,21px);color:var(--muted);max-width:62ch;}
+.h2{font-size:clamp(28px,4vw,44px);}
+.section-head{max-width:760px;margin-bottom:56px;}
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 26px;border-radius:var(--r-sm);font-weight:600;font-size:15.5px;
+  border:1px solid transparent;transition:transform .25s var(--ease),background .25s,box-shadow .25s,border-color .25s,color .25s;
+  letter-spacing:-.01em;white-space:nowrap;
+}
+.btn:focus-visible{outline:3px solid var(--accent-d);outline-offset:3px;}
+/* CTA principal: azul claro acento con texto en negro (paleta corporativa) */
+.btn--primary{background:var(--accent);color:#12161A;box-shadow:0 10px 26px -12px rgba(74,79,84,.55);}
+.btn--primary:hover{transform:translateY(-2px);background:var(--accent-h);box-shadow:0 16px 30px -12px rgba(74,79,84,.6);}
+/* CTA secundario sobre fondo oscuro */
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.34);}
+.btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+/* Variante en negro para el header (ancla de contraste) */
+.btn--solid{background:var(--black);color:#fff;}
+.btn--solid:hover{transform:translateY(-2px);background:var(--graphite);}
+/* Opción alternativa (no CTA principal): contorno sobrio sobre fondo claro */
+.btn--line{background:transparent;color:var(--ink);border-color:var(--line);}
+.btn--line:hover{transform:translateY(-2px);border-color:var(--graphite);background:var(--bg-soft);}
+.btn--line svg{color:var(--accent-d);}
+.btn--lg{padding:18px 32px;font-size:16.5px;}
+.btn .arrow{transition:transform .25s var(--ease);}
+.btn:hover .arrow{transform:translateX(4px);}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);
+  backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid transparent;
+  transition:border-color .3s,box-shadow .3s;
+}
+.site-header.is-stuck{border-bottom-color:var(--line);box-shadow:0 6px 22px -18px rgba(0,0,0,.5);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:88px;}
+/* Logo con más presencia visual; escala limpia y responsive */
+.nav__logo{display:flex;align-items:center;height:56px;}
+.nav__logo img{height:56px;width:auto;transition:height .2s var(--ease);}
+.nav__links{display:flex;align-items:center;gap:34px;list-style:none;margin:0;padding:0;}
+.nav__links a{font-size:15px;color:var(--muted);font-weight:500;position:relative;padding:6px 0;transition:color .2s;}
+.nav__links a:hover{color:var(--ink);}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent);transition:width .25s var(--ease);}
+.nav__links a:hover::after{width:100%;}
+.nav__cta{display:flex;align-items:center;gap:14px;}
+.nav__toggle{display:none;background:none;border:0;padding:8px;color:var(--ink);}
+.nav__toggle svg{display:block;}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--dark);}
+.hero__bg{position:absolute;inset:0;z-index:0;}
+.hero__bg img{width:100%;height:100%;object-fit:cover;opacity:.40;filter:grayscale(.15);}
+.hero__bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(21,23,26,.72) 55%, rgba(21,23,26,.92) 100%),
+    radial-gradient(900px 520px at 80% 10%, rgba(138,172,209,.22), transparent 62%);
+}
+.hero__inner{position:relative;z-index:2;padding:122px 0 0;}
+.hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+.hero h1{font-size:clamp(34px,5.2vw,60px);letter-spacing:-.028em;line-height:1.06;margin:0 0 22px;max-width:15ch;color:#fff;}
+.hero h1 em{font-style:normal;color:var(--sky);}
+.hero__sub{font-size:clamp(16.5px,1.85vw,19.5px);color:rgba(231,238,245,.82);max-width:54ch;margin:0 0 34px;}
+.hero__actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px;}
+.hero__note{font-size:13px;letter-spacing:.02em;color:rgba(231,238,245,.62);display:flex;align-items:center;gap:10px;}
+.hero__note svg{flex:0 0 auto;color:var(--sky);}
+
+/* Panel de estatus de operación (apoyo visual, sobrio) */
+.cpanel{
+  background:linear-gradient(180deg,rgba(74,79,84,.72),rgba(21,23,26,.92));
+  border:1px solid var(--line-dark);border-radius:var(--r);padding:22px;
+  backdrop-filter:blur(6px);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);
+}
+.cpanel__head{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(191,213,230,.85);
+  padding-bottom:14px;margin-bottom:6px;border-bottom:1px solid var(--line-dark);font-weight:600;
+}
+.cpanel__live{display:flex;align-items:center;gap:9px;color:var(--sky);}
+/* Punto activo con halo expandiéndose: gesto sutil de seguimiento en vivo */
+.cpanel__live span{position:relative;width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+.cpanel__live span::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:pulse-ring 2.6s var(--ease) infinite;}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.5;}70%{transform:scale(2.8);opacity:0;}100%{transform:scale(2.8);opacity:0;}}
+.cpanel__row{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.07);}
+.cpanel__row:last-child{border-bottom:0;}
+.cpanel__dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;}
+.cpanel__label{font-size:14.5px;color:#EAF1F7;font-weight:500;flex:1;}
+.cpanel__tag{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:20px;font-weight:600;}
+.tag-on{background:rgba(138,172,209,.2);color:var(--sky);}
+.tag-go{background:transparent;color:rgba(231,238,245,.62);border:1px solid var(--line-dark);}
+.dot-on{background:var(--accent);}
+.dot-go{background:var(--sky);opacity:.6;}
+
+/* Cinta de puertos inferior del hero (sobria, en versalitas) */
+.hero__ports{position:relative;z-index:2;margin-top:60px;border-top:1px solid var(--line-dark);}
+.ports-strip{
+  display:flex;gap:38px;flex-wrap:wrap;padding:18px 0;
+  font-size:12px;letter-spacing:.14em;color:rgba(231,238,245,.55);text-transform:uppercase;font-weight:500;
+}
+.ports-strip b{color:var(--sky);font-weight:600;}
+
+/* ============================================================
+   PROBLEMA
+   ============================================================ */
+.problem{background:var(--bg-soft);}
+.problem__top{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:end;margin-bottom:52px;}
+.problem h2{font-size:clamp(28px,4vw,46px);max-width:16ch;}
+.problem__statement{
+  font-size:clamp(19px,2.2vw,24px);color:var(--ink);font-weight:600;line-height:1.42;
+  border-left:3px solid var(--accent);padding-left:22px;
+}
+.problem__statement b{color:var(--accent-d);font-weight:600;}
+.signals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.signal{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:18px 18px 20px;
+  display:flex;gap:13px;align-items:flex-start;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s;
+}
+.signal:hover{transform:translateY(-3px);box-shadow:0 16px 30px -22px rgba(0,0,0,.22);border-color:#cfd6df;}
+.signal__idx{font-size:12px;color:var(--accent-d);letter-spacing:.04em;padding-top:2px;font-weight:700;}
+.signal p{margin:0;font-size:14.5px;color:var(--ink);font-weight:500;line-height:1.45;}
+
+/* ============================================================
+   SOLUCIÓN
+   ============================================================ */
+.solution{background:var(--graphite);color:#fff;position:relative;overflow:hidden;}
+.solution__bg{position:absolute;inset:0;opacity:.22;}
+.solution__bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);}
+.solution__inner{position:relative;z-index:2;}
+.solution .h2{max-width:18ch;color:#fff;}
+.solution__lead{color:rgba(231,238,245,.82);max-width:60ch;}
+
+.tower{
+  margin-top:56px;background:linear-gradient(180deg,#42474C,#373B40);
+  border:1px solid var(--line-dark);border-radius:18px;padding:30px 28px;
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.7);
+}
+.tower__bar{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:30px;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(191,213,230,.85);font-weight:600;
+  border-bottom:1px solid var(--line-dark);padding-bottom:16px;
+}
+.chain{display:grid;grid-template-columns:repeat(7,1fr);gap:0;align-items:start;}
+.node{position:relative;text-align:center;padding:0 6px;}
+.node__circle{
+  width:60px;height:60px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(138,172,209,.14);border:1px solid rgba(191,213,230,.45);color:var(--sky);
+  position:relative;z-index:2;transition:transform .3s var(--ease),background .3s;
+}
+.node:hover .node__circle{transform:translateY(-4px);background:rgba(138,172,209,.28);}
+.node__circle svg{width:26px;height:26px;}
+.node:not(:last-child)::after{
+  content:"";position:absolute;top:30px;left:calc(50% + 34px);right:calc(-50% + 34px);height:2px;
+  background:linear-gradient(90deg,rgba(191,213,230,.55),rgba(191,213,230,.18));z-index:1;
+}
+.node__name{font-size:13.5px;font-weight:600;color:#fff;margin:0 0 3px;}
+.node__sub{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(191,213,230,.7);}
+.tower__foot{
+  margin-top:28px;padding-top:18px;border-top:1px solid var(--line-dark);
+  font-size:15px;color:rgba(231,238,245,.82);text-align:center;
+}
+.tower__foot b{color:#fff;}
+
+/* ============================================================
+   SERVICIOS
+   ============================================================ */
+.services .section-head{margin-bottom:48px;}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.card{
+  border:1px solid var(--line);border-radius:var(--r);padding:26px 24px 28px;background:#fff;
+  display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;
+  transition:transform .28s var(--ease),box-shadow .28s,border-color .28s;
+}
+.card::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--accent);transition:width .3s var(--ease);}
+.card:hover{transform:translateY(-5px);box-shadow:0 24px 44px -28px rgba(0,0,0,.28);border-color:#d3dae2;}
+.card:hover::before{width:100%;}
+.card__icon{width:46px;height:46px;border-radius:11px;background:var(--sky-soft);color:var(--graphite);display:flex;align-items:center;justify-content:center;}
+.card__icon svg{width:23px;height:23px;}
+.card__idx{position:absolute;top:22px;right:22px;font-size:12px;color:var(--muted-d);letter-spacing:.04em;font-weight:600;}
+.card h3{font-size:18px;letter-spacing:-.01em;}
+.card p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.5;}
+
+/* ============================================================
+   PARA QUIÉN ES
+   ============================================================ */
+.audience{background:var(--sky-soft);}
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+.aud{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:24px;display:flex;gap:15px;align-items:flex-start;}
+.aud__check{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:rgba(138,172,209,.2);color:var(--accent-d);display:flex;align-items:center;justify-content:center;}
+.aud__check svg{width:15px;height:15px;}
+.aud p{margin:0;font-size:15px;font-weight:500;color:var(--ink);line-height:1.45;}
+
+/* ============================================================
+   CÓMO TRABAJAMOS
+   ============================================================ */
+.process{position:relative;color:#fff;background:var(--dark);overflow:hidden;}
+.process__bg{position:absolute;inset:0;opacity:.30;}
+.process__bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);}
+.process__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,23,26,.72),rgba(21,23,26,.88));}
+.process__inner{position:relative;z-index:2;}
+.process .h2{color:#fff;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px;}
+.step{
+  border:1px solid var(--line-dark);border-radius:var(--r);padding:28px 24px;background:rgba(255,255,255,.03);
+  position:relative;transition:background .3s,border-color .3s,transform .3s var(--ease);
+}
+.step:hover{background:rgba(138,172,209,.08);border-color:rgba(191,213,230,.4);transform:translateY(-4px);}
+.step__num{font-size:13px;color:var(--sky);letter-spacing:.1em;margin-bottom:14px;display:block;font-weight:600;}
+.step h3{font-size:18.5px;color:#fff;margin-bottom:10px;}
+.step p{margin:0;font-size:14.5px;color:rgba(231,238,245,.76);line-height:1.5;}
+
+/* ============================================================
+   DIAGNÓSTICO
+   ============================================================ */
+.diagnose{background:var(--bg);}
+.diag-card{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(0,0,0,.45);}
+.diag-card__body{padding:54px 48px;background:var(--graphite);color:#fff;}
+.diag-card__body .h2{color:#fff;font-size:clamp(26px,3.4vw,38px);max-width:16ch;margin-bottom:18px;}
+.diag-card__body p{color:rgba(231,238,245,.82);max-width:46ch;margin:0 0 26px;}
+.diag-list{list-style:none;margin:0 0 32px;padding:0;display:grid;gap:11px;}
+.diag-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#EAF1F7;}
+.diag-list svg{flex:0 0 auto;color:var(--sky);margin-top:3px;}
+.diag-card__media{position:relative;min-height:340px;background:var(--graphite-d);}
+.diag-card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+/* La foto de documentos es muy clara: tinte corporativo para integrarla */
+.diag-card__media::after{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(74,79,84,.5) 0%,rgba(74,79,84,.1) 45%,rgba(138,172,209,.18) 100%);mix-blend-mode:multiply;}
+.diag-card__media::before{content:"DOCUMENTACIÓN · EXPEDIENTE";position:absolute;left:20px;bottom:18px;z-index:2;font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.92);background:rgba(0,0,0,.45);padding:6px 12px;border-radius:20px;backdrop-filter:blur(4px);font-weight:600;}
+
+/* ============================================================
+   CONFIANZA
+   ============================================================ */
+.trust{background:var(--bg-soft);}
+.trust__grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;}
+.trust h2{font-size:clamp(26px,3.6vw,40px);max-width:17ch;margin-bottom:18px;}
+.trust__lead{color:var(--muted);max-width:50ch;margin-bottom:28px;}
+.trust__facts{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fact{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:20px;}
+.fact__k{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-d);margin-bottom:8px;font-weight:600;}
+.fact__v{font-size:15px;font-weight:500;color:var(--ink);line-height:1.4;}
+.ports-card{background:var(--graphite);border-radius:18px;padding:34px 32px;color:#fff;box-shadow:0 40px 70px -45px rgba(0,0,0,.6);}
+.ports-card h3{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);font-weight:600;margin-bottom:22px;}
+.ports-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:22px;}
+.ports-list li{display:flex;align-items:center;gap:11px;padding:13px 0;border-bottom:1px solid var(--line-dark);font-size:15px;color:#EAF1F7;}
+.ports-list li:nth-last-child(-n+2){border-bottom:0;}
+.ports-list .pin{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(138,172,209,.22);}
+/* Matamoros: punto estratégico, jerarquía sutil */
+.ports-list li.is-key{color:#fff;font-weight:600;}
+.ports-list li.is-key .pin{background:var(--sky);box-shadow:0 0 0 4px rgba(138,172,209,.38);}
+.ports-list .tag-key{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);border:1px solid rgba(138,172,209,.45);border-radius:20px;padding:2px 8px;font-weight:600;margin-left:9px;white-space:nowrap;}
+
+/* ============================================================
+   FORMULARIO
+   ============================================================ */
+.form-sec{background:var(--bg);scroll-margin-top:96px;}
+.form-shell{display:grid;grid-template-columns:.8fr 1.2fr;gap:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 40px 90px -55px rgba(0,0,0,.4);}
+.form-aside{background:var(--dark);color:#fff;padding:48px 40px;position:relative;overflow:hidden;}
+.form-aside .h2{color:#fff;font-size:clamp(24px,3vw,32px);margin-bottom:16px;}
+.form-aside p{color:rgba(231,238,245,.8);font-size:15.5px;}
+.form-aside__steps{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:16px;}
+.form-aside__steps li{display:flex;gap:13px;align-items:flex-start;font-size:14.5px;color:#EAF1F7;}
+.form-aside__steps .n{font-size:11.5px;color:var(--sky);border:1px solid var(--line-dark);border-radius:7px;padding:3px 8px;flex:0 0 auto;font-weight:600;}
+.form-main{padding:46px 44px;background:#fff;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;}
+.field{display:flex;flex-direction:column;gap:7px;}
+.field--full{grid-column:1 / -1;}
+.field label{font-size:13px;font-weight:600;color:var(--ink);}
+.field label .req{color:var(--accent-d);}
+.field input,.field select,.field textarea{
+  font-family:inherit;font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);
+  border-radius:9px;padding:12px 13px;transition:border-color .2s,box-shadow .2s;width:100%;
+}
+.field textarea{resize:vertical;min-height:92px;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(138,172,209,.28);}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235C6168' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px;}
+.toggle-row{display:flex;flex-wrap:wrap;gap:9px;}
+.toggle{position:relative;}
+.toggle input{position:absolute;opacity:0;width:0;height:0;}
+.toggle span{display:inline-block;padding:9px 15px;border:1px solid var(--line);border-radius:30px;font-size:13.5px;color:var(--muted);font-weight:500;transition:.2s;user-select:none;}
+.toggle input:checked + span{background:var(--graphite);border-color:var(--graphite);color:#fff;}
+.toggle input:focus-visible + span{outline:3px solid var(--accent-d);outline-offset:2px;}
+.form-actions{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:6px;}
+.form-actions .note{font-size:12.5px;color:var(--muted-d);max-width:34ch;}
+.form-success{grid-column:1/-1;display:none;align-items:flex-start;gap:14px;background:var(--sky-soft);border:1px solid var(--sky);border-radius:12px;padding:20px 22px;}
+.form-success.show{display:flex;}
+.form-success svg{flex:0 0 auto;color:var(--accent-d);margin-top:2px;}
+.form-success p{margin:0;font-size:15px;color:var(--ink);}
+.form-success b{color:var(--head);}
+
+/* ============================================================
+   CIERRE
+   ============================================================ */
+.closing{position:relative;color:#fff;background:var(--dark);overflow:hidden;text-align:center;}
+.closing__bg{position:absolute;inset:0;opacity:.42;}
+.closing__bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);}
+.closing__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 50% 30%,rgba(138,172,209,.24),transparent 62%),linear-gradient(180deg,rgba(21,23,26,.58),rgba(21,23,26,.78));}
+.closing__inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+.closing h2{font-size:clamp(30px,4.6vw,50px);line-height:1.1;margin-bottom:22px;color:#fff;}
+.closing h2 em{font-style:normal;color:var(--sky);}
+.closing p{color:rgba(231,238,245,.82);font-size:clamp(17px,2vw,20px);max-width:56ch;margin:0 auto 34px;}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:var(--black);color:rgba(231,238,245,.7);padding:64px 0 36px;}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px;}
+.foot__logo img{height:48px;margin-bottom:18px;}
+.foot__about{font-size:14.5px;max-width:38ch;color:rgba(231,238,245,.6);}
+.foot h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:18px;font-weight:600;}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+.foot a,.foot li{font-size:14.5px;color:rgba(231,238,245,.72);}
+.foot a:hover{color:#fff;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+.foot-bottom p{margin:0;font-size:12.5px;color:rgba(231,238,245,.5);}
+.foot-bottom .disclaimer{max-width:60ch;}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1000px){
+  .hero__grid{grid-template-columns:1fr;gap:36px;}
+  .cpanel{max-width:520px;}
+  .cards{grid-template-columns:repeat(2,1fr);}
+  .chain{grid-template-columns:repeat(4,1fr);row-gap:30px;}
+  .node:nth-child(4)::after{display:none;}
+  .steps{grid-template-columns:repeat(2,1fr);}
+  .diag-card,.trust__grid,.form-shell{grid-template-columns:1fr;}
+  .diag-card__media{min-height:240px;order:-1;}
+  .signals{grid-template-columns:repeat(2,1fr);}
+  .aud-grid{grid-template-columns:repeat(2,1fr);}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:760px){
+  .section{padding:74px 0;}
+  .nav{height:76px;}
+  .nav__logo,.nav__logo img{height:42px;}
+  .nav__links,.nav__cta .btn{display:none;}
+  .nav__toggle{display:inline-flex;}
+  .nav.open .nav__links{
+    display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;gap:0;
+    background:#fff;border-bottom:1px solid var(--line);padding:8px 24px 18px;box-shadow:0 20px 30px -24px rgba(0,0,0,.4);
+  }
+  .nav.open .nav__links li{width:100%;border-bottom:1px solid var(--line);}
+  .nav.open .nav__links a{display:block;padding:15px 0;}
+  .problem__top{grid-template-columns:1fr;gap:26px;}
+  .tower{padding:22px 16px;}
+  .chain{grid-template-columns:repeat(2,1fr);gap:26px 8px;}
+  .node::after{display:none !important;}
+  .form-grid{grid-template-columns:1fr;}
+  .form-main,.form-aside,.diag-card__body{padding:34px 24px;}
+  .foot-grid{grid-template-columns:1fr;gap:30px;}
+  .hero__inner{padding:84px 0 0;}
+}
+@media (max-width:480px){
+  .signals,.aud-grid,.cards,.steps,.trust__facts,.ports-list{grid-template-columns:1fr;}
+  body{font-size:16px;}
+  .eyebrow{font-size:11px;letter-spacing:.14em;flex-wrap:wrap;}
+  .hero__actions{flex-direction:column;align-items:stretch;}
+  .hero__actions .btn{width:100%;white-space:normal;}
+  .btn--lg{padding:16px 22px;font-size:15.5px;}
+  .ports-strip{gap:14px 22px;font-size:10.5px;letter-spacing:.08em;}
+  .hero__note{font-size:11.5px;}
+  .closing .btn,.diag-card__body .btn{width:100%;white-space:normal;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+  .reveal{opacity:1;transform:none;}
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--accent-d);outline-offset:2px;border-radius:4px;
+}
+.skip{position:absolute;left:-999px;top:0;background:#fff;color:var(--black);padding:12px 18px;z-index:200;border-radius:0 0 8px 0;font-weight:600;}
+.skip:focus{left:0;}
+</style>
+</head>
+
+<body>
+<a href="#main" class="skip">Saltar al contenido</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header" id="top">
+  <div class="wrap">
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+      <a class="nav__logo" href="index.html" aria-label="Interlogin — inicio">
+        <img src="assets/Logo_interlogin.png" alt="Interlogin" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="#problema">Problema</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="#diagnostico">Diagnóstico</a></li>
+      </ul>
+      <div class="nav__cta">
+        <a class="btn btn--solid" href="#diagnostico">Solicitar diagnóstico</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" aria-label="Presentación">
+  <div class="hero__bg" aria-hidden="true">
+    <img src="assets/Hero_carreteras.jpg" alt="" loading="eager" />
+  </div>
+
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__grid">
+        <div>
+          <p class="eyebrow eyebrow--light">Comercio exterior con estructura</p>
+          <h1>Importa con claridad, control y <em>estructura operativa</em>.</h1>
+          <p class="hero__sub">En Interlogin coordinamos operaciones de comercio exterior desde origen hasta destino, con revisión documental, seguimiento operativo y comunicación clara entre proveedor, forwarder, agente aduanal, transporte y cliente.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg" href="#diagnostico">Solicitar diagnóstico de importación <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost btn--lg" href="#proceso">Ver cómo trabajamos</a>
+          </div>
+          <p class="hero__note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Marítimo · Terrestre · Aéreo · Door to Door · Coordinación aduanal
+          </p>
+        </div>
+
+        <!-- Panel de estatus de una operación coordinada -->
+        <div class="cpanel reveal" role="img" aria-label="Estatus de una operación coordinada: proveedor confirmado, documentos en revisión, forwarder asignado, agente aduanal confirmado, transporte nacional programado, entrega final en seguimiento.">
+          <div class="cpanel__head">
+            <span>Operación · Guadalajara</span>
+            <span class="cpanel__live"><span></span>En seguimiento</span>
+          </div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-on"></span><span class="cpanel__label">Proveedor</span><span class="cpanel__tag tag-on">Confirmado</span></div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-go"></span><span class="cpanel__label">Documentos</span><span class="cpanel__tag tag-go">En revisión</span></div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-on"></span><span class="cpanel__label">Forwarder</span><span class="cpanel__tag tag-on">Asignado</span></div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-on"></span><span class="cpanel__label">Agente aduanal</span><span class="cpanel__tag tag-on">Confirmado</span></div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-go"></span><span class="cpanel__label">Transporte nacional</span><span class="cpanel__tag tag-go">Programado</span></div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-go"></span><span class="cpanel__label">Entrega final</span><span class="cpanel__tag tag-go">En seguimiento</span></div>
+        </div>
+      </div>
+
+      <div class="hero__ports">
+        <div class="ports-strip" aria-hidden="true">
+          <span><b>MANZANILLO</b> · MX</span>
+          <span><b>LÁZARO CÁRDENAS</b> · MX</span>
+          <span><b>ALTAMIRA</b> · MX</span>
+          <span><b>LAREDO</b> · FRONTERA</span>
+          <span><b>MATAMOROS</b> · FRONTERA</span>
+          <span><b>GUADALAJARA</b> · BASE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROBLEMA
+     ============================================================ -->
+<section class="section problem" id="problema" aria-labelledby="problema-h">
+  <div class="wrap">
+    <div class="problem__top">
+      <div class="reveal">
+        <p class="eyebrow">El punto ciego de toda importación</p>
+        <h2 id="problema-h">La mercancía rara vez es el problema.</h2>
+      </div>
+      <p class="problem__statement reveal">Muchas importaciones no se complican por la carga. Se complican por <b>falta de coordinación, documentos incompletos y decisiones tomadas tarde</b>.</p>
+    </div>
+
+    <div class="signals">
+      <div class="signal reveal"><span class="signal__idx">01</span><p>Facturas comerciales con información insuficiente y packing list incompleto.</p></div>
+      <div class="signal reveal"><span class="signal__idx">02</span><p>Falta de fichas técnicas y dudas de clasificación arancelaria.</p></div>
+      <div class="signal reveal"><span class="signal__idx">03</span><p>Restricciones no previstas: posibles NOM, permisos o regulaciones.</p></div>
+      <div class="signal reveal"><span class="signal__idx">04</span><p>Expediente fiscal o archivo legal sin ordenar a tiempo.</p></div>
+      <div class="signal reveal"><span class="signal__idx">05</span><p>Proveedores que embarcan sin validar los documentos.</p></div>
+      <div class="signal reveal"><span class="signal__idx">06</span><p>Forwarder, transportista y agente aduanal trabajando desconectados.</p></div>
+      <div class="signal reveal"><span class="signal__idx">07</span><p>Mercancía detenida por falta de información y costos de almacenaje.</p></div>
+      <div class="signal reveal"><span class="signal__idx">08</span><p>Cambios de tiempos y operaciones manejadas por urgencia, no por proceso.</p></div>
+      <div class="signal reveal"><span class="signal__idx">09</span><p>Nadie sabe qué sigue, quién tiene cada pendiente ni qué riesgo existe.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOLUCIÓN
+     ============================================================ -->
+<section class="section solution" aria-labelledby="solucion-h">
+  <div class="solution__bg" aria-hidden="true">
+    <img src="assets/hero_red.jpg" alt="" loading="lazy" />
+  </div>
+  <div class="wrap solution__inner">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow--light">La solución</p>
+      <h2 class="h2" id="solucion-h">Estructuramos la operación antes de que avance.</h2>
+      <p class="solution__lead">Más que mover carga, ordenamos la operación de comercio exterior: revisamos la información, coordinamos a cada actor y damos seguimiento hasta la entrega, para que la importación avance como un proceso claro y no como una urgencia.</p>
+    </div>
+
+    <div class="tower reveal" role="img" aria-label="Operación coordinada por Interlogin: proveedor, documentos, forwarder, aduana, transporte, cliente y entrega final.">
+      <div class="tower__bar">
+        <span>Estructura de la operación · Interlogin</span>
+        <span class="cpanel__live"><span></span>Operación coordinada</span>
+      </div>
+      <div class="chain">
+        <div class="node">
+          <div class="node__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6"/><path d="M5 8v11h14V8"/><path d="M9 19v-6h6v6"/></svg></div>
+          <p class="node__name">Proveedor</p><span class="node__sub">Origen</span>
+        </div>
+        <div class="node">
+          <div class="node__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 14l2 2 4-4"/></svg></div>
+          <p class="node__name">Documentos</p><span class="node__sub">Revisión</span>
+        </div>
+        <div class="node">
+          <div class="node__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18M3 12h18"/></svg></div>
+          <p class="node__name">Forwarder</p><span class="node__sub">Flete int.</span>
+        </div>
+        <div class="node">
+          <div class="node__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <p class="node__name">Aduana</p><span class="node__sub">Despacho</span>
+        </div>
+        <div class="node">
+          <div class="node__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 16V6h13v10"/><path d="M14 9h4l3 3v4h-7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div>
+          <p class="node__name">Transporte</p><span class="node__sub">Nacional</span>
+        </div>
+        <div class="node">
+          <div class="node__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 21c0-3.8 3.1-6.5 7-6.5s7 2.7 7 6.5"/></svg></div>
+          <p class="node__name">Cliente</p><span class="node__sub">Visibilidad</span>
+        </div>
+        <div class="node">
+          <div class="node__circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p class="node__name">Entrega final</p><span class="node__sub">Destino</span>
+        </div>
+      </div>
+      <p class="tower__foot">Te ayudamos a saber <b>qué falta, quién lo tiene, qué sigue y qué riesgo existe.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICIOS
+     ============================================================ -->
+<section class="section services" id="servicios" aria-labelledby="servicios-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Servicios</p>
+      <h2 class="h2" id="servicios-h">Servicios diseñados para ordenar tu importación.</h2>
+      <p class="lead">Cada servicio existe para una sola cosa: que tu operación avance con orden, con claridad documental y con un responsable claro en cada punto.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <span class="card__idx">01</span>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16l1.5-5h15L21 16"/><path d="M2 20c1.5 0 1.5-1 3-1s1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1"/><path d="M12 11V4l5 3"/></svg></div>
+        <h3>Logística marítima</h3>
+        <p>Embarques de mayor volumen cuidando tiempos, costos y la conexión con despacho aduanal y transporte nacional.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">02</span>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 16V6h13v10"/><path d="M14 9h4l3 3v4h-7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div>
+        <h3>Logística terrestre</h3>
+        <p>Cruces fronterizos y transporte nacional desde frontera o puerto hasta el destino final de la mercancía.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">03</span>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a.5.5 0 0 0-.5.8L8 11l-2 2-2-.5a.5.5 0 0 0-.5.8L6 16l1.7 2.5a.5.5 0 0 0 .8-.5L8 16l2-2 3.4 3.7a.5.5 0 0 0 .8-.5z"/></svg></div>
+        <h3>Logística aérea</h3>
+        <p>Para mercancía urgente o sensible al tiempo: rapidez, documentación y coordinación aduanal con seguimiento.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">04</span>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/><path d="M3 21h18"/></svg></div>
+        <h3>Door to Door</h3>
+        <p>Servicio integral de origen a destino: proveedor, recolección, flete internacional, despacho, transporte y entrega.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">05</span>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg></div>
+        <h3>Revisión documental</h3>
+        <p>Validación preventiva de factura, packing list, fichas técnicas, certificados y expediente antes del embarque.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">06</span>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
+        <h3>Coordinación aduanal</h3>
+        <p>Acompañamiento con agentes aduanales aliados para pedimento, despacho, requisitos y seguimiento operativo.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">07</span>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Diagnóstico de importación</h3>
+        <p>Revisión inicial para identificar ruta, documentos, riesgos, país de origen, tiempos y próximos pasos.</p>
+      </article>
+      <article class="card reveal">
+        <span class="card__idx">08</span>
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 5 4-12 2 7h6"/></svg></div>
+        <h3>Seguimiento operativo</h3>
+        <p>Avances, pendientes, responsables y riesgos comunicados con claridad durante toda la operación.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PARA QUIÉN ES
+     ============================================================ -->
+<section class="section audience" aria-labelledby="audiencia-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Para quién es</p>
+      <h2 class="h2" id="audiencia-h">Si te reconoces aquí, hablemos.</h2>
+    </div>
+    <div class="aud-grid">
+      <div class="aud reveal"><span class="aud__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Empresas que importan por primera vez y necesitan una guía clara.</p></div>
+      <div class="aud reveal"><span class="aud__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Empresas con operaciones recurrentes que buscan reducir riesgos.</p></div>
+      <div class="aud reveal"><span class="aud__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Importadores de maquinaria, refacciones, equipo industrial o electrónicos.</p></div>
+      <div class="aud reveal"><span class="aud__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Quienes ya tienen proveedor, pero necesitan ordenar la operación.</p></div>
+      <div class="aud reveal"><span class="aud__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Negocios que quieren dejar de operar en urgencias.</p></div>
+      <div class="aud reveal"><span class="aud__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Empresas que requieren coordinación Door to Door de principio a fin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CÓMO TRABAJAMOS
+     ============================================================ -->
+<section class="section process" id="proceso" aria-labelledby="proceso-h">
+  <div class="process__bg" aria-hidden="true">
+    <img src="assets/hero_control.jpg" alt="" loading="lazy" />
+  </div>
+  <div class="wrap process__inner">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow--light">Cómo trabajamos</p>
+      <h2 class="h2" id="proceso-h">Un proceso claro para importar con orden.</h2>
+      <p class="solution__lead">Seis pasos para pasar de una operación dispersa a una operación coordinada, con claridad documental y seguimiento de principio a fin.</p>
+    </div>
+    <ol class="steps" style="list-style:none;padding:0;margin-top:54px;">
+      <li class="step reveal"><span class="step__num">PASO 01</span><h3>Diagnóstico inicial</h3><p>Entendemos qué quieres importar, desde dónde, en qué etapa está la mercancía y qué documentos tienes.</p></li>
+      <li class="step reveal"><span class="step__num">PASO 02</span><h3>Revisión documental</h3><p>Validamos factura, packing list, fichas técnicas, datos del proveedor, archivo legal y documentos necesarios.</p></li>
+      <li class="step reveal"><span class="step__num">PASO 03</span><h3>Análisis de ruta</h3><p>Evaluamos marítimo, terrestre, aéreo o door to door según tiempo, costo, riesgo y tipo de mercancía.</p></li>
+      <li class="step reveal"><span class="step__num">PASO 04</span><h3>Coordinación logística y aduanal</h3><p>Conectamos proveedor, forwarder, agente aduanal, transporte y cliente para que la operación avance con orden.</p></li>
+      <li class="step reveal"><span class="step__num">PASO 05</span><h3>Seguimiento operativo</h3><p>Comunicamos avances, pendientes, riesgos y próximos pasos durante toda la operación.</p></li>
+      <li class="step reveal"><span class="step__num">PASO 06</span><h3>Entrega final</h3><p>Coordinamos el cierre de la operación hasta el destino final acordado.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIAGNÓSTICO
+     ============================================================ -->
+<section class="section diagnose" id="diagnostico-intro" aria-labelledby="diag-h">
+  <div class="wrap">
+    <div class="diag-card reveal">
+      <div class="diag-card__body">
+        <p class="eyebrow eyebrow--light">Diagnóstico de importación</p>
+        <h2 class="h2" id="diag-h">Antes de importar, revisemos tu operación.</h2>
+        <p>El diagnóstico es el punto de partida. En una revisión inicial ordenamos lo que tienes y vemos lo que falta, antes de que la operación avance.</p>
+        <ul class="diag-list">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Entendemos qué se quiere importar y desde dónde.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Revisamos los documentos disponibles e identificamos faltantes.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Detectamos riesgos documentales, aduanales y logísticos.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Definimos la ruta logística más conveniente.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Ordenamos los próximos pasos de la operación.</li>
+        </ul>
+        <a class="btn btn--primary btn--lg" href="#diagnostico">Solicitar diagnóstico de importación <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="diag-card__media" aria-hidden="true">
+        <img src="assets/hero_documentos.jpg" alt="" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONFIANZA
+     ============================================================ -->
+<section class="section trust" aria-labelledby="trust-h">
+  <div class="wrap">
+    <div class="trust__grid">
+      <div class="reveal">
+        <p class="eyebrow">Respaldo operativo</p>
+        <h2 id="trust-h">Operaciones de comercio exterior con seguimiento y estructura.</h2>
+        <p class="trust__lead">Experiencia coordinando operaciones marítimas, terrestres y aéreas en puertos y fronteras de México, junto a aliados logísticos y aduanales.</p>
+        <div class="trust__facts">
+          <div class="fact"><div class="fact__k">Modalidades</div><div class="fact__v">Marítimo, terrestre, aéreo y Door to Door.</div></div>
+          <div class="fact"><div class="fact__k">Operación</div><div class="fact__v">Puertos, fronteras y transporte nacional.</div></div>
+          <div class="fact"><div class="fact__k">Coordinación</div><div class="fact__v">Aliados logísticos y aduanales.</div></div>
+          <div class="fact"><div class="fact__k">Base</div><div class="fact__v">Guadalajara, Jalisco, México.</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="ports-card">
+          <h3>Alcance operativo</h3>
+          <ul class="ports-list">
+            <li><span class="pin" aria-hidden="true"></span>Manzanillo</li>
+            <li><span class="pin" aria-hidden="true"></span>Lázaro Cárdenas</li>
+            <li><span class="pin" aria-hidden="true"></span>Altamira</li>
+            <li><span class="pin" aria-hidden="true"></span>Laredo</li>
+            <li class="is-key"><span class="pin" aria-hidden="true"></span>Matamoros<span class="tag-key">Punto estratégico</span></li>
+            <li><span class="pin" aria-hidden="true"></span>Guadalajara</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FORMULARIO DE CAPTACIÓN
+     ============================================================ -->
+<section class="section form-sec" id="diagnostico" aria-labelledby="form-h">
+  <div class="wrap">
+    <div class="form-shell reveal">
+      <aside class="form-aside">
+        <p class="eyebrow eyebrow--light">Solicitud de diagnóstico</p>
+        <h2 class="h2" id="form-h">No operes a ciegas.</h2>
+        <p>Cuéntanos en qué punto está tu operación. Con esa información preparamos tu diagnóstico y te indicamos los siguientes pasos.</p>
+        <ul class="form-aside__steps">
+          <li><span class="n">01</span> Recibimos y revisamos la información de tu operación.</li>
+          <li><span class="n">02</span> Identificamos faltantes, riesgos y ruta más conveniente.</li>
+          <li><span class="n">03</span> Te contactamos con los próximos pasos, sin compromiso.</li>
+        </ul>
+      </aside>
+
+      <div class="form-main">
+        <!-- ============================================================
+             FORMULARIO — SIN BACKEND CONECTADO TODAVÍA.
+             Para activar el envío, conecta el handler en el <script>
+             (función submit) a UNO de estos destinos:
+               · Correo        → hola@interlogin.io vía Formspree / EmailJS / endpoint propio
+               · WhatsApp      → enlace https://wa.me/523351252818?text=...
+               · CRM           → endpoint/API del CRM
+               · Google Sheets → Google Apps Script Web App (doPost)
+               · Webhook       → URL de Zapier / Make / n8n
+             Reemplaza la línea marcada con  // TODO: CONECTAR ENVÍO
+             ============================================================ -->
+        <form id="diagForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-nombre">Nombre <span class="req">*</span></label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="f-empresa">Empresa <span class="req">*</span></label>
+              <input id="f-empresa" name="empresa" type="text" autocomplete="organization" required />
+            </div>
+            <div class="field">
+              <label for="f-correo">Correo <span class="req">*</span></label>
+              <input id="f-correo" name="correo" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="f-tel">Teléfono / WhatsApp <span class="req">*</span></label>
+              <input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required />
+            </div>
+
+            <div class="field field--full">
+              <label for="f-importar">¿Qué quieres importar?</label>
+              <input id="f-importar" name="importar" type="text" placeholder="Maquinaria, refacciones, electrónicos…" />
+            </div>
+
+            <div class="field">
+              <label for="f-origen">País de origen</label>
+              <input id="f-origen" name="origen" type="text" placeholder="China, EE. UU., Alemania…" />
+            </div>
+            <div class="field">
+              <label for="f-destino">Destino en México</label>
+              <input id="f-destino" name="destino" type="text" placeholder="Ciudad o estado" />
+            </div>
+
+            <div class="field">
+              <label for="f-proveedor">¿Ya tienes proveedor?</label>
+              <select id="f-proveedor" name="proveedor">
+                <option value="">Selecciona…</option>
+                <option>Sí</option><option>No</option><option>En proceso</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-factura">¿Ya tienes factura comercial?</label>
+              <select id="f-factura" name="factura">
+                <option value="">Selecciona…</option>
+                <option>Sí</option><option>No</option><option>No estoy seguro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-packing">¿Ya tienes packing list?</label>
+              <select id="f-packing" name="packing">
+                <option value="">Selecciona…</option>
+                <option>Sí</option><option>No</option><option>No estoy seguro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-lista">¿La mercancía ya está lista?</label>
+              <select id="f-lista" name="lista">
+                <option value="">Selecciona…</option>
+                <option>Sí</option><option>No</option><option>Parcialmente</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label for="f-embarcada">¿Ya fue embarcada?</label>
+              <select id="f-embarcada" name="embarcada">
+                <option value="">Selecciona…</option>
+                <option>Sí, ya está en tránsito</option>
+                <option>No, aún no</option>
+                <option>Está detenida</option>
+                <option>No lo sé</option>
+              </select>
+            </div>
+
+            <fieldset class="field field--full" style="border:0;padding:0;margin:0;">
+              <legend style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:9px;padding:0;">¿Qué tipo de apoyo necesitas?</legend>
+              <div class="toggle-row">
+                <label class="toggle"><input type="radio" name="apoyo" value="Solo logística"><span>Solo logística</span></label>
+                <label class="toggle"><input type="radio" name="apoyo" value="Revisión documental"><span>Revisión documental</span></label>
+                <label class="toggle"><input type="radio" name="apoyo" value="Coordinación aduanal"><span>Coordinación aduanal</span></label>
+                <label class="toggle"><input type="radio" name="apoyo" value="Door to Door"><span>Door to Door</span></label>
+                <label class="toggle"><input type="radio" name="apoyo" value="Diagnóstico completo"><span>Diagnóstico completo</span></label>
+                <label class="toggle"><input type="radio" name="apoyo" value="Necesito orientación"><span>No sé todavía, necesito orientación</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field field--full">
+              <label for="f-mensaje">Mensaje adicional</label>
+              <textarea id="f-mensaje" name="mensaje" placeholder="Cualquier detalle que nos ayude a entender tu operación."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary btn--lg">Enviar solicitud de diagnóstico <span class="arrow" aria-hidden="true">→</span></button>
+              <!-- Opción alternativa: contacto directo por WhatsApp (mensaje armado con los datos del formulario vía JS; href de respaldo si no hay JS) -->
+              <a id="waSmart" class="btn btn--line btn--lg" href="https://wa.me/523351252818?text=Hola%20Interlogin%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20de%20importaci%C3%B3n.%20Me%20gustar%C3%ADa%20revisar%20una%20operaci%C3%B3n%20de%20comercio%20exterior." target="_blank" rel="noopener" aria-label="Enviar por WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.95.51 3.78 1.4 5.37L2 22l4.85-1.27a9.9 9.9 0 0 0 5.19 1.48h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.84 9.84 0 0 0 12.04 2zm0 1.8c2.16 0 4.18.84 5.71 2.37a8.03 8.03 0 0 1 2.37 5.72c0 4.47-3.64 8.1-8.12 8.1a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.07.81.82-3-.19-.31a8.04 8.04 0 0 1-1.26-4.33c0-4.47 3.64-8.1 8.12-8.1zm-2.65 4.36c-.18 0-.46.07-.7.34-.24.27-.92.9-.92 2.18 0 1.29.94 2.53 1.07 2.71.13.18 1.85 2.83 4.49 3.97 2.2.95 2.65.76 3.13.71.48-.04 1.54-.63 1.76-1.24.22-.61.22-1.13.15-1.24-.06-.11-.24-.18-.51-.31-.27-.13-1.59-.79-1.83-.88-.24-.09-.42-.13-.6.14-.18.27-.69.88-.85 1.06-.16.18-.31.2-.58.07-.27-.13-1.13-.42-2.16-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.83-1.99-.22-.52-.44-.45-.6-.46l-.51-.01z"/></svg>
+                Enviar por WhatsApp
+              </a>
+              <span class="note">Tus datos se usan únicamente para revisar tu operación con fines de diagnóstico comercial.</span>
+            </div>
+
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+              <p><b>Gracias.</b> Revisaremos la información de tu operación y te contactaremos para indicarte los siguientes pasos.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CIERRE
+     ============================================================ -->
+<section class="section closing" aria-labelledby="cierre-h">
+  <div class="closing__bg" aria-hidden="true">
+    <img src="assets/hero_estructura.jpg" alt="" loading="lazy" />
+  </div>
+  <div class="wrap">
+    <div class="closing__inner reveal">
+      <p class="eyebrow eyebrow--light" style="justify-content:center;">Menos urgencias. Más control.</p>
+      <h2 id="cierre-h">La diferencia está en <em>anticipar</em>.</h2>
+      <p>Entre una operación costosa y una operación coordinada, la diferencia casi siempre está en anticipar. Hablemos antes de que tu carga se detenga: ordenamos la información antes de mover la mercancía.</p>
+      <a class="btn btn--primary btn--lg" href="#diagnostico">Solicitar diagnóstico de importación <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot__logo">
+        <img src="assets/logo_interlogin_blanco.png" alt="Interlogin" />
+        <p class="foot__about">Comercio exterior con estructura. Coordinamos tu operación internacional desde origen hasta destino: documentos, logística, aduana y entrega final.</p>
+      </div>
+      <div class="foot">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#problema">Problema</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#diagnostico">Diagnóstico</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Contacto</h4>
+        <ul>
+          <li>Guadalajara, Jalisco, México</li>
+          <li><a href="mailto:hola@interlogin.io">hola@interlogin.io</a></li>
+          <li><a href="https://wa.me/523351252818?text=Hola%20Interlogin%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20de%20importaci%C3%B3n.%20Me%20gustar%C3%ADa%20revisar%20una%20operaci%C3%B3n%20de%20comercio%20exterior." target="_blank" rel="noopener">WhatsApp (33) 5125-2818</a></li>
+          <li><a href="https://interlogin.io">interlogin.io</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Síguenos</h4>
+        <ul>
+          <!-- Verifica el usuario exacto de X antes de publicar -->
+          <li><a href="https://x.com/Ginterlogin" target="_blank" rel="noopener">X · @Ginterlogin</a></li>
+          <li><a href="https://instagram.com/Interlogin1" target="_blank" rel="noopener">Instagram · @Interlogin1</a></li>
+          <li><a href="https://facebook.com/Interlogin" target="_blank" rel="noopener">Facebook · Interlogin</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="year">2025</span> Interlogin. Todos los derechos reservados.</p>
+      <p class="disclaimer">La información de la operación será revisada para fines de diagnóstico comercial.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   JS mínimo: navegación móvil, header al hacer scroll,
+   reveals por scroll y envío del formulario (sin backend).
+   ============================================================ */
+(function(){
+  "use strict";
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Header: sombra al hacer scroll */
+  var header = document.querySelector('.site-header');
+  var onScroll = function(){ header.classList.toggle('is-stuck', window.scrollY > 12); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* Menú móvil */
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('navToggle');
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  });
+  nav.querySelectorAll('.nav__links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* Reveal por scroll (respeta reduced motion vía CSS) */
+  var els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ----------------------------------------------------------
+     ENVÍO DEL FORMULARIO → Google Apps Script (Google Sheets)
+     Envía con fetch en modo no-cors y redirige a gracias.html.
+     ---------------------------------------------------------- */
+  var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDbweDf_8MAVsp7FEX6tDhPa9_bm0nZ_6VCmvV5CMrVQM_TcigRrBtY1qrrYYCnA8s/exec";
+
+  var form = document.getElementById('diagForm');
+
+  if(form){
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalText = submitBtn ? submitBtn.innerHTML : "";
+
+      if(submitBtn){
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Enviando solicitud...";
+      }
+
+      var formData = new FormData(form);
+      // Origen del lead (automático)
+      formData.append("origenLead", "Landing Interlogin");
+
+      // Guardamos los datos por si quieres leerlos/usarlos en gracias.html
+      try{
+        var data = Object.fromEntries(formData.entries());
+        sessionStorage.setItem("interlogin_diagnostico", JSON.stringify(data));
+      }catch(e){}
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(formData)
+      })
+      .then(function(){
+        window.location.href = "gracias.html";
+      })
+      .catch(function(error){
+        console.error("Error al enviar el formulario:", error);
+        if(submitBtn){
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+        alert("No pudimos enviar la solicitud. Intenta nuevamente o escríbenos por WhatsApp.");
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     BOTÓN "ENVIAR POR WHATSAPP" (inteligente)
+     Arma el mensaje con lo que el usuario ya escribió.
+     Si no hay datos, usa un mensaje general (href de respaldo).
+     ---------------------------------------------------------- */
+  var waBtn = document.getElementById('waSmart');
+  if(waBtn && form){
+    waBtn.addEventListener('click', function(ev){
+      var val = function(name){
+        var el = form.elements[name];
+        return el && el.value ? el.value.trim() : "";
+      };
+      var apoyoEl = form.querySelector('input[name="apoyo"]:checked');
+      var apoyo = apoyoEl ? apoyoEl.value : "";
+
+      // Si no hay nada escrito, dejamos el href de respaldo (mensaje general)
+      var algunDato = ["nombre","empresa","correo","telefono","importar","origen","destino","mensaje"]
+        .some(function(n){ return val(n) !== ""; }) || apoyo !== "";
+      if(!algunDato){ return; } // usa el href general por defecto
+
+      ev.preventDefault();
+      var lineas = [
+        "Hola Interlogin, quiero solicitar un diagnóstico de importación.",
+        "",
+        "Nombre: " + val("nombre"),
+        "Empresa: " + val("empresa"),
+        "Correo: " + val("correo"),
+        "Teléfono: " + val("telefono"),
+        "Qué quiero importar: " + val("importar"),
+        "País de origen: " + val("origen"),
+        "Destino en México: " + val("destino"),
+        "Tipo de apoyo: " + apoyo,
+        "Mensaje adicional: " + val("mensaje")
+      ];
+      var url = "https://wa.me/523351252818?text=" + encodeURIComponent(lineas.join("\n"));
+      window.open(url, "_blank", "noopener");
+    });
+  }
+})();
+
+</script>
+</body>
+</html>

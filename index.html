@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ============================================================
+     META
+     ============================================================ -->
+<title>Interlogin · Comercio exterior con estructura</title>
+<meta name="description" content="Coordinación logística, documental y operativa para importaciones con destino México. Comercio exterior con estructura." />
+<meta name="theme-color" content="#000000" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Interlogin · Comercio exterior con estructura" />
+<meta property="og:description" content="Coordinación logística, documental y operativa para importaciones con destino México." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://interlogin.io" />
+
+<style>
+/* ============================================================
+   INTERLOGIN — PORTADA INSTITUCIONAL (index.html)
+   Antesala sobria y editorial. Misma identidad que el resto del sitio.
+   Concepto: "Comercio exterior con estructura".
+   Sin librerías ni frameworks.
+   ============================================================ */
+
+/* ---------- Paleta corporativa (idéntica al resto del sitio) ---------- */
+:root{
+  --black:#000000;
+  --dark:#15171A;        /* casi negro: fondo oscuro sobre imagen */
+  --graphite:#4A4F54;    /* gris corporativo */
+  --graphite-d:#3B3F44;
+  --sky:#BFD5E6;         /* azul claro */
+  --sky-soft:#EAF1F7;    /* tinte muy claro */
+  --accent:#8AACD1;      /* acento */
+  --accent-d:#50749E;    /* acento oscuro */
+  --accent-h:#789DC4;    /* acento hover */
+
+  --ink:#17191C;
+  --head:#000000;
+  --muted:#5C6168;
+  --line:#E3E7EC;
+  --line-dark:rgba(255,255,255,.16);
+  --bg:#FFFFFF;
+
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Helvetica Neue",sans-serif;
+  --maxw:1180px;
+  --r:14px;
+  --r-sm:10px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* ---------- Reset ---------- */
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+html,body{overflow-x:hidden;}
+body{
+  margin:0;font-family:var(--sans);color:#fff;background:var(--dark);
+  line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2{line-height:1.1;letter-spacing:-.022em;font-weight:700;margin:0;}
+
+/* ---------- Helpers ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%;}
+.eyebrow{
+  font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);
+  display:inline-flex;align-items:center;gap:11px;margin:0 0 22px;font-weight:600;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--sky);display:inline-block;}
+
+/* ---------- Botones (idénticos al resto del sitio) ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 26px;border-radius:var(--r-sm);font-weight:600;font-size:15.5px;
+  border:1px solid transparent;transition:transform .25s var(--ease),background .25s,box-shadow .25s,border-color .25s,color .25s;
+  letter-spacing:-.01em;white-space:nowrap;
+}
+.btn:focus-visible{outline:3px solid var(--sky);outline-offset:3px;}
+.btn--primary{background:var(--accent);color:#12161A;box-shadow:0 10px 26px -12px rgba(0,0,0,.6);}
+.btn--primary:hover{transform:translateY(-2px);background:var(--accent-h);}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.34);}
+.btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.btn--lg{padding:18px 32px;font-size:16.5px;}
+.btn .arrow{transition:transform .25s var(--ease);}
+.btn:hover .arrow{transform:translateX(4px);}
+
+/* ============================================================
+   PORTADA (pantalla completa)
+   ============================================================ */
+.portal{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;}
+.portal__bg{position:absolute;inset:0;z-index:0;}
+.portal__bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;opacity:.55;filter:grayscale(.12);}
+/* Overlay oscuro elegante: imagen visible, atmósfera seria, buena legibilidad */
+.portal__bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.40) 0%, rgba(21,23,26,.66) 52%, rgba(21,23,26,.92) 100%),
+    radial-gradient(1000px 560px at 80% 8%, rgba(138,172,209,.20), transparent 64%);
+}
+
+/* ---------- Header mínimo ---------- */
+.site-header{position:relative;z-index:3;}
+.nav{display:flex;align-items:center;justify-content:space-between;height:96px;gap:18px;}
+.nav__logo img{height:56px;width:auto;}
+.nav__links{display:flex;align-items:center;gap:28px;}
+.nav__links a{font-size:14.5px;color:rgba(231,238,245,.82);font-weight:500;position:relative;padding:6px 0;transition:color .2s;display:inline-flex;align-items:center;gap:8px;}
+.nav__links a:hover{color:#fff;}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--sky);transition:width .25s var(--ease);}
+.nav__links a:hover::after{width:100%;}
+.nav__links svg{flex:0 0 auto;}
+
+/* ---------- Hero editorial ---------- */
+.hero{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:48px 0 36px;}
+.hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center;width:100%;}
+.hero h1{font-size:clamp(40px,6.6vw,82px);letter-spacing:-.035em;line-height:1.02;margin:0 0 24px;max-width:13ch;color:#fff;}
+.hero h1 em{font-style:normal;color:var(--sky);}
+.hero__sub{font-size:clamp(16.5px,1.9vw,20px);color:rgba(231,238,245,.85);max-width:54ch;margin:0 0 16px;}
+.hero__phrase{font-size:14.5px;color:rgba(231,238,245,.62);border-left:2px solid var(--accent);padding-left:14px;margin:0 0 34px;max-width:46ch;}
+.hero__actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+.hero__wa{font-size:14px;color:rgba(231,238,245,.7);font-weight:500;display:inline-flex;align-items:center;gap:8px;padding:6px 4px;transition:color .2s;}
+.hero__wa:hover{color:#fff;}
+.hero__wa svg{flex:0 0 auto;color:var(--sky);}
+.hero__micro{margin-top:30px;font-size:12.5px;letter-spacing:.06em;color:rgba(231,238,245,.55);}
+
+/* Panel mínimo de estado operativo (no compite con el mensaje) */
+.cpanel{
+  background:linear-gradient(180deg,rgba(74,79,84,.6),rgba(21,23,26,.82));
+  border:1px solid var(--line-dark);border-radius:var(--r);padding:20px;
+  backdrop-filter:blur(6px);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);
+}
+.cpanel__head{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(191,213,230,.85);
+  padding-bottom:13px;margin-bottom:4px;border-bottom:1px solid var(--line-dark);font-weight:600;
+}
+.cpanel__live{display:flex;align-items:center;gap:9px;color:var(--sky);}
+/* Punto activo con halo expandiéndose: mismo gesto de radar del sitio */
+.cpanel__live span{position:relative;width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+.cpanel__live span::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:pulse-ring 2.6s var(--ease) infinite;}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.5;}70%{transform:scale(2.8);opacity:0;}100%{transform:scale(2.8);opacity:0;}}
+.cpanel__row{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,.07);}
+.cpanel__row:last-child{border-bottom:0;}
+.cpanel__dot{position:relative;width:9px;height:9px;border-radius:50%;flex:0 0 auto;}
+.cpanel__label{font-size:14px;color:#EAF1F7;font-weight:500;flex:1;}
+.cpanel__tag{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:20px;font-weight:600;}
+.tag-on{background:rgba(138,172,209,.2);color:var(--sky);}
+.tag-go{background:transparent;color:rgba(231,238,245,.6);border:1px solid var(--line-dark);}
+.dot-on{background:var(--accent);}
+.dot-go{background:var(--sky);opacity:.6;}
+.dot-live::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:pulse-ring 2.6s var(--ease) infinite;}
+
+/* ---------- Strip institucional ---------- */
+.strip{position:relative;z-index:2;border-top:1px solid var(--line-dark);}
+.strip__inner{display:flex;flex-wrap:wrap;gap:10px 26px;padding:18px 0;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(231,238,245,.6);font-weight:500;}
+.strip__inner span{display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px 26px;}
+.strip__sep{color:rgba(138,172,209,.6);}
+
+/* ---------- Footer mínimo ---------- */
+.portal__foot{position:relative;z-index:2;background:rgba(0,0,0,.45);}
+.foot__inner{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px 0;font-size:13px;color:rgba(231,238,245,.6);}
+.foot__inner a{color:rgba(231,238,245,.72);transition:color .2s;}
+.foot__inner a:hover{color:#fff;}
+.foot__dots{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.foot__dots .sep{color:rgba(255,255,255,.25);}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:920px){
+  .hero__grid{grid-template-columns:1fr;gap:40px;}
+  .cpanel{max-width:520px;}
+  .nav{height:80px;}
+  .nav__logo img{height:46px;}
+}
+@media (max-width:600px){
+  .nav__links{gap:18px;}
+  .hero{padding:30px 0 28px;}
+  .hero__actions .btn{width:100%;white-space:normal;}
+  .hero__wa{width:100%;justify-content:center;}
+  .strip__inner span{gap:14px;}
+  .foot__inner{flex-direction:column;align-items:flex-start;}
+}
+
+/* Accesibilidad: respeta reduced motion */
+@media (prefers-reduced-motion:reduce){ *{animation:none !important;transition:none !important;} }
+a:focus-visible{outline:3px solid var(--sky);outline-offset:2px;border-radius:4px;}
+.skip{position:absolute;left:-999px;top:0;background:#fff;color:var(--black);padding:12px 18px;z-index:200;border-radius:0 0 8px 0;font-weight:600;}
+.skip:focus{left:0;}
+</style>
+</head>
+
+<body>
+<a href="#hero" class="skip">Saltar al contenido</a>
+
+<section class="portal">
+  <!-- Imagen institucional de puerto (comercio exterior) -->
+  <div class="portal__bg" aria-hidden="true">
+    <img src="assets/Manzanillo.jpg" alt="" loading="eager" />
+  </div>
+
+  <!-- ====================== HEADER MÍNIMO ====================== -->
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="nav__logo" href="index.html" aria-label="Interlogin — inicio">
+          <!-- Logo blanco sobre fondo oscuro -->
+          <img src="assets/logo_interlogin_blanco.png" alt="Interlogin" />
+        </a>
+        <div class="nav__links">
+          <a href="diagnostico.html">Diagnóstico</a>
+          <a href="https://wa.me/523351252818?text=Hola%20Interlogin%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20de%20importaci%C3%B3n.%20Me%20gustar%C3%ADa%20revisar%20una%20operaci%C3%B3n%20de%20comercio%20exterior." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.95.51 3.78 1.4 5.37L2 22l4.85-1.27a9.9 9.9 0 0 0 5.19 1.48h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.84 9.84 0 0 0 12.04 2zm0 1.8c2.16 0 4.18.84 5.71 2.37a8.03 8.03 0 0 1 2.37 5.72c0 4.47-3.64 8.1-8.12 8.1a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.07.81.82-3-.19-.31a8.04 8.04 0 0 1-1.26-4.33c0-4.47 3.64-8.1 8.12-8.1zm-2.65 4.36c-.18 0-.46.07-.7.34-.24.27-.92.9-.92 2.18 0 1.29.94 2.53 1.07 2.71.13.18 1.85 2.83 4.49 3.97 2.2.95 2.65.76 3.13.71.48-.04 1.54-.63 1.76-1.24.22-.61.22-1.13.15-1.24-.06-.11-.24-.18-.51-.31-.27-.13-1.59-.79-1.83-.88-.24-.09-.42-.13-.6.14-.18.27-.69.88-.85 1.06-.16.18-.31.2-.58.07-.27-.13-1.13-.42-2.16-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.83-1.99-.22-.52-.44-.45-.6-.46l-.51-.01z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====================== HERO EDITORIAL ====================== -->
+  <main class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="eyebrow">Interlogin</p>
+          <h1>Comercio exterior con <em>estructura</em>.</h1>
+          <p class="hero__sub">Coordinamos operaciones de importación con claridad documental, seguimiento operativo y comunicación entre proveedor, forwarder, agente aduanal, transporte y cliente.</p>
+          <p class="hero__phrase">Una importación ordenada empieza antes de mover la carga.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg" href="diagnostico.html#diagnostico">Solicitar diagnóstico de importación <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost btn--lg" href="diagnostico.html#proceso">Conocer cómo trabajamos</a>
+          </div>
+          <a class="hero__wa" href="https://wa.me/523351252818?text=Hola%20Interlogin%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20de%20importaci%C3%B3n.%20Me%20gustar%C3%ADa%20revisar%20una%20operaci%C3%B3n%20de%20comercio%20exterior." target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.95.51 3.78 1.4 5.37L2 22l4.85-1.27a9.9 9.9 0 0 0 5.19 1.48h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.84 9.84 0 0 0 12.04 2zm0 1.8c2.16 0 4.18.84 5.71 2.37a8.03 8.03 0 0 1 2.37 5.72c0 4.47-3.64 8.1-8.12 8.1a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.07.81.82-3-.19-.31a8.04 8.04 0 0 1-1.26-4.33c0-4.47 3.64-8.1 8.12-8.1zm-2.65 4.36c-.18 0-.46.07-.7.34-.24.27-.92.9-.92 2.18 0 1.29.94 2.53 1.07 2.71.13.18 1.85 2.83 4.49 3.97 2.2.95 2.65.76 3.13.71.48-.04 1.54-.63 1.76-1.24.22-.61.22-1.13.15-1.24-.06-.11-.24-.18-.51-.31-.27-.13-1.59-.79-1.83-.88-.24-.09-.42-.13-.6.14-.18.27-.69.88-.85 1.06-.16.18-.31.2-.58.07-.27-.13-1.13-.42-2.16-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.83-1.99-.22-.52-.44-.45-.6-.46l-.51-.01z"/></svg>
+            ¿Prefieres escribirnos? Hablar por WhatsApp
+          </a>
+          <p class="hero__micro">Marítimo · Terrestre · Aéreo · Door to Door · Coordinación aduanal</p>
+        </div>
+
+        <!-- Panel mínimo de estado operativo (apoyo, no protagonista) -->
+        <div class="cpanel" role="img" aria-label="Estado operativo: documentación en revisión, ruta logística en análisis, coordinación aduanal confirmada, siguiente paso diagnóstico.">
+          <div class="cpanel__head">
+            <span>Operación · Interlogin</span>
+            <span class="cpanel__live"><span></span>En curso</span>
+          </div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-on dot-live"></span><span class="cpanel__label">Documentación</span><span class="cpanel__tag tag-go">En revisión</span></div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-go"></span><span class="cpanel__label">Ruta logística</span><span class="cpanel__tag tag-go">En análisis</span></div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-on"></span><span class="cpanel__label">Coordinación aduanal</span><span class="cpanel__tag tag-on">Confirmada</span></div>
+          <div class="cpanel__row"><span class="cpanel__dot dot-go"></span><span class="cpanel__label">Siguiente paso</span><span class="cpanel__tag tag-go">Diagnóstico</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====================== STRIP INSTITUCIONAL ====================== -->
+  <div class="strip">
+    <div class="wrap">
+      <div class="strip__inner" aria-hidden="true">
+        <span>México<i class="strip__sep">·</i>Puertos<i class="strip__sep">·</i>Fronteras<i class="strip__sep">·</i>Logística internacional<i class="strip__sep">·</i>Coordinación aduanal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== FOOTER MÍNIMO ====================== -->
+  <footer class="portal__foot">
+    <div class="wrap">
+      <div class="foot__inner">
+        <span>© <span id="year">2025</span> Interlogin · Comercio exterior con estructura.</span>
+        <div class="foot__dots">
+          <a href="https://interlogin.io">interlogin.io</a><span class="sep">·</span>
+          <a href="mailto:hola@interlogin.io">hola@interlogin.io</a><span class="sep">·</span>
+          <a href="https://wa.me/523351252818?text=Hola%20Interlogin%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20de%20importaci%C3%B3n.%20Me%20gustar%C3%ADa%20revisar%20una%20operaci%C3%B3n%20de%20comercio%20exterior." target="_blank" rel="noopener">(33) 5125-2818</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
+
+<script>
+/* Año dinámico (único JS necesario) */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
